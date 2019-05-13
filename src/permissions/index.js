@@ -1,16 +1,19 @@
-import { shield, not } from 'graphql-shield'
+import { shield } from 'graphql-shield'
+import deepmerge from 'deepmerge'
+
 import { isAuthenticatedUser } from './rules'
 
-export default shield({
+import { permissions } from '../resolvers'
+
+const basePermissions = {
   Query: {
     '*': isAuthenticatedUser
   },
   Mutation: {
-    '*': isAuthenticatedUser,
-    login: not(isAuthenticatedUser),
-    signup: not(isAuthenticatedUser),
+    '*': isAuthenticatedUser
   },
-  UserCreateInput: {
-    '*': not(isAuthenticatedUser)
-  }
-})
+}
+
+const mergedPermissions = deepmerge.all([ basePermissions, ...permissions ], { clone: false })
+
+export default shield(mergedPermissions)

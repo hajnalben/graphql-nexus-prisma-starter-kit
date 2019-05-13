@@ -1,15 +1,16 @@
-import { Query } from './Query'
-import { Mutation } from './Mutation'
-// import { Subscription } from './Subscription'
-import { AuthPayload } from './AuthPayload'
-import { User } from './User'
-import * as Input from './Input'
+import Query from './Query'
+import Mutation from './Mutation'
+import * as User from './User'
+import * as AuthPayload from './AuthPayload'
+import UserPermissions from './User/User.permissions'
+import AuthPayloadPermissions from './AuthPayload/AuthPayload.permissions'
+
 
 export const resolvers = {
   Query,
-  // Subscription,
-  AuthPayload,
-  User,
   Mutation,
-  ...Input
+  User,
+  AuthPayload
 }
+
+export const permissions = [ UserPermissions, AuthPayloadPermissions ]

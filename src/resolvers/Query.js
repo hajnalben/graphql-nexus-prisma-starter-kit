@@ -1,6 +1,6 @@
-import { prismaObjectType } from 'nexus-prisma'
+import { objectType } from 'nexus'
 
-export const Query = prismaObjectType({
+export default objectType({
   name: 'Query',
-  definition: t => t.prismaFields(['*']),
+  definition: (t) => {},
 })

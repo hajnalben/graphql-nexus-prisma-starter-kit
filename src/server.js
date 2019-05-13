@@ -5,7 +5,7 @@ import { makePrismaSchema } from 'nexus-prisma'
 import { prisma } from './generated/prisma-client'
 import datamodelInfo from './generated/nexus-prisma'
 
-import * as resolvers from './resolvers'
+import { resolvers } from './resolvers'
 import permissions from './permissions'
 
 const schema = makePrismaSchema({
