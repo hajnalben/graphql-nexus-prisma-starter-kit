@@ -7,6 +7,8 @@ import datamodelInfo from './generated/nexus-prisma'
 
 import { resolvers } from './resolvers'
 import permissions from './permissions'
+import env from './env'
+
 
 const schema = makePrismaSchema({
   types: resolvers,
@@ -32,6 +34,8 @@ const server = new GraphQLServer({
     }
   },
 })
+
 server.start({
+  port: env.PORT,
   tracing: true
-},() => console.log(`Server is running on http://localhost:4000`))
+}, () => console.log(`Server is running on http://localhost:${env.PORT}`))

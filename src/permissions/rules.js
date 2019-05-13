@@ -1,7 +1,6 @@
 import { rule } from 'graphql-shield'
 import { verify } from 'jsonwebtoken'
-
-const APP_SECRET = 'ASD123'
+import env from '../env'
 
 function getUserId(context) {
   const Authorization = context.request.get('Authorization')
@@ -9,7 +8,7 @@ function getUserId(context) {
   if (Authorization) {
     const token = Authorization.replace('Bearer ', '')
 
-    const verifiedToken = verify(token, APP_SECRET)
+    const verifiedToken = verify(token, env.APP_SECRET)
 
     return verifiedToken && verifiedToken.userId
   }

@@ -1,8 +1,7 @@
 import { stringArg, idArg, extendType } from 'nexus'
 import { hash, compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
-
-const APP_SECRET = 'ASD123'
+import env from '../../env'
 
 export const Mutation = extendType({
   name: 'Mutation',
@@ -24,7 +23,7 @@ export const Mutation = extendType({
           password: hashedPassword,
         })
         return {
-          token: sign({ userId: user.id }, APP_SECRET),
+          token: sign({ userId: user.id }, env.APP_SECRET),
           user,
         }
       },
@@ -46,7 +45,7 @@ export const Mutation = extendType({
           throw new Error('Invalid password')
         }
         return {
-          token: sign({ userId: user.id }, APP_SECRET),
+          token: sign({ userId: user.id }, env.APP_SECRET),
           user,
         }
       },
