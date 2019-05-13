@@ -11,7 +11,7 @@ const basePermissions = {
   },
   Mutation: {
     '*': isAuthenticatedUser
-  },
+  }
 }
 
 const mergedPermissions = deepmerge.all([ basePermissions, ...permissions ], { clone: false })

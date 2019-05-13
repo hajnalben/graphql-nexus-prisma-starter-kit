@@ -6,6 +6,6 @@ export default {
   },
   Mutation: {
     login: not(isAuthenticatedUser),
-    signup: not(isAuthenticatedUser),
-  },
+    signup: not(isAuthenticatedUser)
+  }
 }

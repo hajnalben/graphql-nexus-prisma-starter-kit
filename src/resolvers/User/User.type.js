@@ -8,5 +8,5 @@ export const User = prismaObjectType({
     'updatedAt',
     'email',
     'name'
-  ]),
+  ])
 })

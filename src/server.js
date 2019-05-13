@@ -9,19 +9,18 @@ import { resolvers } from './resolvers'
 import permissions from './permissions'
 import env from './env'
 
-
 const schema = makePrismaSchema({
   types: resolvers,
 
   prisma: {
     datamodelInfo,
-    client: prisma,
+    client: prisma
   },
 
   outputs: {
     schema: path.join(__dirname, './generated/schema.graphql'),
-    typegen: path.join(__dirname, './generated/nexus.ts'),
-  },
+    typegen: path.join(__dirname, './generated/nexus.ts')
+  }
 })
 
 const server = new GraphQLServer({
@@ -30,9 +29,9 @@ const server = new GraphQLServer({
   context: request => {
     return {
       ...request,
-      prisma,
+      prisma
     }
-  },
+  }
 })
 
 server.start({

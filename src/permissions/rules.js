@@ -2,7 +2,7 @@ import { rule } from 'graphql-shield'
 import { verify } from 'jsonwebtoken'
 import env from '../env'
 
-function getUserId(context) {
+function getUserId (context) {
   const Authorization = context.request.get('Authorization')
 
   if (Authorization) {

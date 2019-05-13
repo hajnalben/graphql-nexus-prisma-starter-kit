@@ -2,7 +2,7 @@ import { prismaInputObjectType } from 'nexus-prisma'
 
 export const UserCreateInput = prismaInputObjectType({
   name: 'UserCreateInput',
-  definition(t) {
+  definition (t) {
     t.prismaFields([ 'email', 'name' ])
   }
 })

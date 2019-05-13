@@ -1,6 +1,5 @@
 import { prismaExtendType } from 'nexus-prisma'
 
-
 export const Mutation = prismaExtendType({
   name: 'Mutation',
   type: 'Mutation',
@@ -9,5 +8,5 @@ export const Mutation = prismaExtendType({
     t.prismaFields([ 'createUser', 'updateUser', 'deleteUser', 'deleteManyUsers' ])
 
     // Here we can add more custom mutations
-  },
+  }
 })

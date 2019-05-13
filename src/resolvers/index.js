@@ -5,7 +5,6 @@ import * as AuthPayload from './AuthPayload'
 import UserPermissions from './User/User.permissions'
 import AuthPayloadPermissions from './AuthPayload/AuthPayload.permissions'
 
-
 export const resolvers = {
   Query,
   Mutation,
