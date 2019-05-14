@@ -3,7 +3,6 @@ import dotenvParseVariables from 'dotenv-parse-variables'
 
 const NODE_ENV = process.env.NODE_ENV || 'developement'
 
-// https://github.com/bkeepers/dotenv#what-other-env-files-can-i-use
 const dotenvFiles = [
   `.env.${NODE_ENV}.local`,
   `.env.${NODE_ENV}`,
@@ -25,7 +24,5 @@ dotenvFiles.forEach((dotenvFile) => {
     }
   }
 })
-
-console.log(env)
 
 export default env

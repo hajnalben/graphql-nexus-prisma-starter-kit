@@ -7,26 +7,29 @@ type AuthPayload {
   user: User!
 }
 
-type BatchPayload {
-  count: Long!
-}
-
 scalar DateTime
-
-scalar Long
 
 type Mutation {
   createUser(data: UserCreateInput!): User!
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteUser(where: UserWhereUniqueInput!): User
   login(email: String, password: String): AuthPayload!
   signup(email: String, name: String, password: String): AuthPayload!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
 }
 
+enum MutationType {
+  CREATED
+  DELETED
+  UPDATED
+}
+
 type Query {
   user(where: UserWhereUniqueInput!): User
   users(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]!
+}
+
+type Subscription {
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload!
 }
 
 type User {
@@ -40,6 +43,7 @@ type User {
 input UserCreateInput {
   email: String!
   name: String!
+  password: String
 }
 
 enum UserOrderByInput {
@@ -57,10 +61,36 @@ enum UserOrderByInput {
   updatedAt_DESC
 }
 
+type UserPreviousValues {
+  createdAt: DateTime!
+  email: String!
+  id: ID!
+  name: String!
+  password: String
+  updatedAt: DateTime!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  previousValues: UserPreviousValues
+  updatedFields: [String!]
+}
+
+input UserSubscriptionWhereInput {
+  AND: [UserSubscriptionWhereInput!]
+  mutation_in: [MutationType!]
+  node: UserWhereInput
+  NOT: [UserSubscriptionWhereInput!]
+  OR: [UserSubscriptionWhereInput!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+}
+
 input UserUpdateInput {
   email: String
   name: String
-  password: String
 }
 
 input UserWhereInput {

@@ -6,10 +6,11 @@ export const Query = prismaExtendType({
   definition: t => {
     // Forwarding prisma queries
     t.prismaFields([
-      'user',
-      'users',
+    {{#each fields}}
+      '{{ this }}',
+    {{/each}}
     ])
 
-    // Here you can add your custom fields to the User query
+    // Here you can add your custom fields to the {{type}} query
   }
 })

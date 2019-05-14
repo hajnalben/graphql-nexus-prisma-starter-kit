@@ -6,9 +6,9 @@ export const Mutation = prismaExtendType({
   definition: (t) => {
     // Forwarding prisma mutations
     t.prismaFields([
-      'createUser',
-      'updateUser',
-      'deleteUser'
+    {{#each fields}}
+      '{{ this }}',
+    {{/each}}
     ])
 
     // Here we can add more custom mutations

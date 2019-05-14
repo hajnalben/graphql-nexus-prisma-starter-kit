@@ -1,0 +1,15 @@
+import { prismaObjectType } from 'nexus-prisma'
+
+export const {{type}} = prismaObjectType({
+  name: '{{type}}',
+  definition: t => {
+    // Forwarding prisma type fields
+    t.prismaFields([
+    {{#each fields}}
+      '{{ this }}',
+    {{/each}}
+    ])
+
+    // Here you can add your custom fields to the {{type}} type
+  }
+})
