@@ -7,10 +7,17 @@ type AuthPayload {
   user: User!
 }
 
+type BatchPayload {
+  count: Long!
+}
+
 scalar DateTime
+
+scalar Long
 
 type Mutation {
   createUser(data: UserCreateInput!): User!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteUser(where: UserWhereUniqueInput!): User
   login(email: String, password: String): AuthPayload!
   signup(email: String, name: String, password: String): AuthPayload!

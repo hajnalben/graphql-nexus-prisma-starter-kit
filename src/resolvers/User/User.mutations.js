@@ -8,7 +8,8 @@ export const Mutation = prismaExtendType({
     t.prismaFields([
       'createUser',
       'updateUser',
-      'deleteUser'
+      'deleteUser',
+      'deleteManyUsers'
     ])
 
     // Here we can add more custom mutations

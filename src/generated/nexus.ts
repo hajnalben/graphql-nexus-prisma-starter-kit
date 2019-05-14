@@ -123,6 +123,9 @@ export interface NexusGenRootTypes {
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
+  BatchPayload: { // root type
+    count: any; // Long!
+  }
   Mutation: {};
   Query: {};
   Subscription: {};
@@ -153,6 +156,7 @@ export interface NexusGenRootTypes {
   Boolean: boolean;
   ID: string;
   DateTime: any;
+  Long: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
@@ -170,8 +174,12 @@ export interface NexusGenFieldTypes {
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
+  BatchPayload: { // field return type
+    count: any; // Long!
+  }
   Mutation: { // field return type
     createUser: NexusGenRootTypes['User']; // User!
+    deleteManyUsers: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteUser: NexusGenRootTypes['User'] | null; // User
     login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
@@ -211,6 +219,9 @@ export interface NexusGenArgTypes {
   Mutation: {
     createUser: { // args
       data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
+    }
+    deleteManyUsers: { // args
+      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
     deleteUser: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
@@ -255,7 +266,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthPayload" | "Mutation" | "Query" | "Subscription" | "User" | "UserPreviousValues" | "UserSubscriptionPayload";
+export type NexusGenObjectNames = "AuthPayload" | "BatchPayload" | "Mutation" | "Query" | "Subscription" | "User" | "UserPreviousValues" | "UserSubscriptionPayload";
 
 export type NexusGenInputNames = "UserCreateInput" | "UserSubscriptionWhereInput" | "UserUpdateInput" | "UserWhereInput" | "UserWhereUniqueInput";
 
@@ -263,7 +274,7 @@ export type NexusGenEnumNames = "MutationType" | "UserOrderByInput";
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String";
+export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "Long" | "String";
 
 export type NexusGenUnionNames = never;
 
