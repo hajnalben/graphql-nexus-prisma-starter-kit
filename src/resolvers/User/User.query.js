@@ -8,6 +8,7 @@ export const Query = prismaExtendType({
     t.prismaFields([
       'user',
       'users',
+      'usersConnection'
     ])
 
     // Here you can add your custom fields to the User query

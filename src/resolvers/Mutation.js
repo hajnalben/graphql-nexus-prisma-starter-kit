@@ -1,6 +1,6 @@
-import { mutationType } from 'nexus'
+import { prismaObjectType } from 'nexus-prisma'
 
-export default mutationType({
+export default prismaObjectType({
   name: 'Mutation',
   definition: (t) => {}
 })

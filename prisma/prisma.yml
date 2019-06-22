@@ -5,11 +5,12 @@ datamodel: datamodel.prisma
 
 generate:
   - generator: javascript-client
-    output: ../src/generated/prisma-client/
+    output: ../generated/prisma-client/
   - generator: graphql-schema
-    output: ../src/generated/prisma-schema.graphql
+    output: ../generated/prisma-schema.graphql
 
 hooks:
   post-deploy:
-    # - prisma generate - Since Prisma 1.31, the Prisma client is generated automatically after running `prisma deploy`
-    - npx nexus-prisma-generate --client ./src/generated/prisma-client --output ./src/generated/nexus-prisma --js --project ./prisma/prisma.yml
+    - mkdir -p generated
+    - npx nexus-prisma-generate --client ./generated/prisma-client --output ./generated/nexus-prisma --js --project ./prisma/prisma.yml
+    - prisma generate

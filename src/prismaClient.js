@@ -1,4 +1,4 @@
-import { Prisma } from './generated/prisma-client'
+import { Prisma } from '../generated/prisma-client'
 import env from './env'
 
 export default new Prisma({

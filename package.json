@@ -1,10 +1,10 @@
 {
-  "name": "prisma_backend",
+  "name": "graphql-nexus-prisma-starter-kit",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "node -r esm src/server.js",
+    "postinstall": "patch-package",
+    "start": "node index.js",
     "lint": "eslint ./src",
     "generate": "plop",
     "test": "jest"
@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
     "deepmerge": "^3.2.0",
     "dotenv": "^8.0.0",
     "dotenv-parse-variables": "^0.2.0",
@@ -25,7 +26,9 @@
     "jsonwebtoken": "^8.5.1",
     "nexus": "^0.11.7",
     "nexus-prisma": "^0.3.7",
-    "prisma-client-lib": "^1.30.4"
+    "prisma-client-lib": "^1.30.4",
+    "sofa-api": "^0.3.0",
+    "swagger-ui-express": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -41,6 +44,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
     "jest": "^24.8.0",
+    "patch-package": "^6.1.2",
     "plop": "^2.3.0",
     "pluralize": "^7.0.0",
     "prisma-datamodel": "^1.30.4"

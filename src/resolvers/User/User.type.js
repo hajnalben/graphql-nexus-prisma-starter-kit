@@ -15,3 +15,17 @@ export const User = prismaObjectType({
     // Here you can add your custom fields to the User type
   }
 })
+
+export const UserConnection = prismaObjectType({
+  name: 'UserConnection',
+  definition (t) {
+    t.prismaFields(['*'])
+
+    t.field('aggregate', {
+      ...t.prismaType.aggregate,
+      resolve (root, args, ctx) {
+        return ctx.prisma.usersConnection(args).aggregate()
+      }
+    })
+  }
+})

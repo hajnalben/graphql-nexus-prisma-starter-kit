@@ -4,6 +4,7 @@ import permissions from './permissions'
 import env from './env'
 import schema from './schema'
 import prisma from './prismaClient'
+import initRestAPI from './restAPI'
 
 const server = new GraphQLServer({
   schema,
@@ -16,7 +17,11 @@ const server = new GraphQLServer({
   }
 })
 
+if (env.REST_API_PREFIX) {
+  initRestAPI(server.express)
+}
+
 server.start({
   port: env.PORT,
-  tracing: true
+  tracing: env.GRAPHQL_TRACING
 }, () => console.log(`Server is running on http://localhost:${env.PORT}`))

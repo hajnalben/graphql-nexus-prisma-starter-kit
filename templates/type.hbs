@@ -13,3 +13,18 @@ export const {{type}} = prismaObjectType({
     // Here you can add your custom fields to the {{type}} type
   }
 })
+
+// To use with react-admin this hack must be added!
+export const {{type}}Connection = prismaObjectType({
+  name: '{{type}}Connection',
+  definition (t) {
+    t.prismaFields(['*'])
+
+    t.field('aggregate', {
+      ...t.prismaType.aggregate,
+      resolve (root, args, ctx) {
+        return ctx.prisma.{{lowerCase type}}sConnection(args).aggregate()
+      }
+    })
+  }
+})

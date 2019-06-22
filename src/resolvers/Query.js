@@ -1,6 +1,6 @@
-import { objectType } from 'nexus'
+import { prismaObjectType } from 'nexus-prisma'
 
-export default objectType({
+export default prismaObjectType({
   name: 'Query',
   definition: (t) => {}
 })

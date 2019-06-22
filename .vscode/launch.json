@@ -8,8 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch GraphQL server",
-      "program": "${workspaceFolder}/src/server.js",
-      "runtimeArgs": ["-r", "esm"]
+      "program": "${workspaceFolder}/index.js"
     }
   ]
 }
