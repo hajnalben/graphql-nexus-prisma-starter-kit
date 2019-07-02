@@ -38,6 +38,8 @@ module.exports = function (plop) {
       choices: ({ type }) => selectType(type).fields.map(f => ({ name: f.name, checked: f.name !== 'password' }))
     }],
     actions: data => {
+      data.connection = pluralize(camelcase(data.type)) + 'Connection'
+
       return [{
         type: 'add',
         path: 'src/resolvers/{{type}}/{{type}}.type.js',
@@ -76,6 +78,10 @@ module.exports = function (plop) {
       }, {
         name: 'Select by where clause (' + pluralize(camelcase(type)) + ')',
         value: pluralize(camelcase(type)),
+        checked: true
+      }, {
+        name: 'Relay typed connection (' + pluralize(camelcase(type)) + 'Connection)',
+        value: pluralize(camelcase(type)) + 'Connection',
         checked: true
       }]
     }],

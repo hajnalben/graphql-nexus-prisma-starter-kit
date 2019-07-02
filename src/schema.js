@@ -2,7 +2,7 @@ import path from 'path'
 import { makePrismaSchema } from 'nexus-prisma'
 import datamodelInfo from '../generated/nexus-prisma'
 
-import { resolvers } from './resolvers'
+import resolvers from './resolvers'
 import prismaClient from './prismaClient'
 
 const schema = makePrismaSchema({

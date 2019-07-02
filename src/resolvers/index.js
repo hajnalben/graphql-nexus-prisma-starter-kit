@@ -1,21 +1,15 @@
+
 // This empty definitions are needed to prevent prisma-nexus binding all queries and mutations
 import Query from './Query'
 import Mutation from './Mutation'
 import * as scalars from './scalars'
+import requireAll from '../util/requireAll'
 
-import * as AuthPayload from './AuthPayload'
+const resolvers = requireAll(__dirname)
 
-import * as User from './User'
-
-import UserPermissions from './User/User.permissions'
-import AuthPayloadPermissions from './AuthPayload/AuthPayload.permissions'
-
-export const resolvers = {
+export default {
   scalars,
   Query,
   Mutation,
-  User,
-  AuthPayload
+  ...resolvers
 }
-
-export const permissions = [ UserPermissions, AuthPayloadPermissions ]

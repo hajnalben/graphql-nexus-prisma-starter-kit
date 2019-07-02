@@ -1,4 +1,5 @@
 import { prismaExtendType } from 'nexus-prisma'
+import mail from '../../mail'
 
 export const Mutation = prismaExtendType({
   name: 'Mutation',
@@ -11,22 +12,20 @@ export const Mutation = prismaExtendType({
       'deleteManyUsers'
     ])
 
-    // Supporting file upload
     t.field('createUser', {
       ...t.prismaType.createUser,
       resolve: async (root, args, ctx) => {
-        if (args.data.profile) {
-          const { createReadStream, filename, mimetype, encoding } = await args.data.profile
+        args.data.password = 'inactive'
 
-          // do something with the uploaded file
-
-          delete args.data.profile
-        }
+        mail({
+          to: args.data.email,
+          subject: 'User activation'
+        }, 'activateUser', {
+          ...args.data
+        })
 
         return t.prismaType.createUser.resolve(root, args, ctx)
       }
     })
-
-    // Here we can add more custom mutations
   }
 })

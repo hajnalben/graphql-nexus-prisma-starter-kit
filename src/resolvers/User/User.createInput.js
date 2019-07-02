@@ -5,12 +5,19 @@ export const UserCreateInput = prismaInputObjectType({
   definition (t) {
     // Forwarding prisma type fields
     t.prismaFields([
-      'id',
       'email',
-      'name',
-      'password'
+      'name'
     ])
+  }
+})
 
-    t.upload('profile')
+export const UserUpdateInput = prismaInputObjectType({
+  name: 'UserUpdateInput',
+  definition (t) {
+    // Forwarding prisma type fields
+    t.prismaFields([
+      'email',
+      'name'
+    ])
   }
 })

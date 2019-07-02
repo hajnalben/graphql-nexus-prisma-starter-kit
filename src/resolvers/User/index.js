@@ -1,5 +1,0 @@
-export * as Queries from './User.query'
-export * as Mutations from './User.mutations'
-export * as Subscriptions from './User.subscription'
-export * as Types from './User.type'
-export * as CreateInputs from './User.createInput'

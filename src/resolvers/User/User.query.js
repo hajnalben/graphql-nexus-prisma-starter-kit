@@ -10,7 +10,6 @@ export const Query = prismaExtendType({
       'users',
       'usersConnection'
     ])
-
     // Here you can add your custom fields to the User query
   }
 })

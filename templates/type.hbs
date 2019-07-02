@@ -23,7 +23,7 @@ export const {{type}}Connection = prismaObjectType({
     t.field('aggregate', {
       ...t.prismaType.aggregate,
       resolve (root, args, ctx) {
-        return ctx.prisma.{{lowerCase type}}sConnection(args).aggregate()
+        return ctx.prisma.{{connection}}(args).aggregate()
       }
     })
   }

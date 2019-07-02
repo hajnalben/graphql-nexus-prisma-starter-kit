@@ -11,16 +11,6 @@ export const User = prismaObjectType({
       'email',
       'name'
     ])
-
-    // React-admin ra-data-opencrud needs this additinal field to support file uploading
-    // Field name must match UserCreateInput's upload scalar field name
-    t.string('profile', {
-      resolve () {
-        return ''
-      }
-    })
-
-    // Here you can add your custom fields to the User type
   }
 })
 

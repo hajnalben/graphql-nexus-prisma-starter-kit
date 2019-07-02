@@ -1,9 +1,7 @@
-import { isAuthenticatedUser } from '../../permissions/rules'
+import { isAuthenticatedUser } from '../rules'
 import { not } from 'graphql-shield'
 
 export default {
-  Query: {
-  },
   Mutation: {
     login: not(isAuthenticatedUser),
     signup: not(isAuthenticatedUser)
