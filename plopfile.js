@@ -12,7 +12,6 @@ const types = allTypes.filter(type => !type.isEmbedded && !type.isEnum && !type.
 // console.log(JSON.stringify(types, null, 2))
 
 const selectType = name => types.find(t => t.name === name)
-const hasIndexFile = name => fs.existsSync(`src/resolvers/${name}/index.js`)
 
 module.exports = function (plop) {
   plop.setWelcomeMessage('What can I do for you?')
@@ -44,11 +43,6 @@ module.exports = function (plop) {
         type: 'add',
         path: 'src/resolvers/{{type}}/{{type}}.type.js',
         templateFile: 'templates/type.hbs'
-      }, {
-        type: hasIndexFile(data.type) ? 'append' : 'add',
-        path: 'src/resolvers/{{type}}/index.js',
-        template: 'export * as Types from \'./{{type}}.type\'\n',
-        separator: ''
       }]
     }
   })
@@ -90,11 +84,6 @@ module.exports = function (plop) {
         type: 'add',
         path: 'src/resolvers/{{type}}/{{type}}.query.js',
         templateFile: 'templates/query.hbs'
-      }, {
-        type: hasIndexFile(data.type) ? 'append' : 'add',
-        path: 'src/resolvers/{{type}}/index.js',
-        template: 'export * as Queries from \'./{{type}}.query\'\n',
-        separator: ''
       }]
     }
   })
@@ -132,11 +121,6 @@ module.exports = function (plop) {
         type: 'add',
         path: 'src/resolvers/{{type}}/{{type}}.mutations.js',
         templateFile: 'templates/mutations.hbs'
-      }, {
-        type: hasIndexFile(data.type) ? 'append' : 'add',
-        path: 'src/resolvers/{{type}}/index.js',
-        template: 'export * as Mutations from \'./{{type}}.mutations\'\n',
-        separator: ''
       }]
     }
   })
@@ -168,11 +152,6 @@ module.exports = function (plop) {
         type: 'add',
         path: 'src/resolvers/{{type}}/{{type}}.createInput.js',
         templateFile: 'templates/createInput.hbs'
-      }, {
-        type: hasIndexFile(data.type) ? 'append' : 'add',
-        path: 'src/resolvers/{{type}}/index.js',
-        template: 'export * as CreateInputs from \'./{{type}}.createInput\'\n',
-        separator: ''
       }]
     }
   })
@@ -197,11 +176,6 @@ module.exports = function (plop) {
         type: 'add',
         path: 'src/resolvers/{{type}}/{{type}}.updateInput.js',
         templateFile: 'templates/updateInput.hbs'
-      }, {
-        type: hasIndexFile(data.type) ? 'append' : 'add',
-        path: 'src/resolvers/{{type}}/index.js',
-        template: 'export * as UpdateInputs from \'./{{type}}.updateInput\'\n',
-        separator: ''
       }]
     }
   })
@@ -228,11 +202,6 @@ module.exports = function (plop) {
         type: 'add',
         path: 'src/resolvers/{{type}}/{{type}}.subscription.js',
         templateFile: 'templates/subscription.hbs'
-      }, {
-        type: hasIndexFile(data.type) ? 'append' : 'add',
-        path: 'src/resolvers/{{type}}/index.js',
-        template: 'export * as Subscriptions from \'./{{type}}.subscription\'\n',
-        separator: ''
       }]
     }
   })
